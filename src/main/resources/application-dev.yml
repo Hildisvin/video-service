@@ -1,9 +1,20 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:video;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:videodb;MODE=MYSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
     driver-class-name: org.h2.Driver
     username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
   jpa:
-    hibernate.ddl-auto: update
-  h2.console.enabled: true
-server.port: 8082
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always

@@ -4,15 +4,15 @@ import java.time.LocalDate;
 import java.util.List;
 
 public record VideoDto(
-        String id,
+        Long id,
         String title,
         String description,
         LocalDate releaseDate,
         String streamUrl,
         String visibility,
-        String channelId,
+        Long channelId,
         String channelName,
-        String seriesId,
+        Long seriesId,
         String seriesTitle,
         Integer positionInSeries,
         List<String> genres

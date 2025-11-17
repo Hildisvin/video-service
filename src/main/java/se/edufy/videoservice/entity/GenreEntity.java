@@ -1,19 +1,33 @@
 package se.edufy.videoservice.entity;
+
 import jakarta.persistence.*;
-import java.util.UUID;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "genres")
 public class GenreEntity {
 
-    @Id @GeneratedValue
-    private UUID id;
-
-    @Column(nullable = false, unique = true, length = 100)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false, length = 100, unique = true)
     private String name;
-
-    public UUID getId() { return id; }
-    public String getName() { return name; }
-
-    public void setName(String name) { this.name = name; }
+    @ManyToMany(mappedBy = "genres")
+    private Set<VideoEntity> videos = new HashSet<>();
+    public Long getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public Set<VideoEntity> getVideos() {
+        return videos;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setVideos(Set<VideoEntity> videos) {
+        this.videos = videos;
+    }
 }

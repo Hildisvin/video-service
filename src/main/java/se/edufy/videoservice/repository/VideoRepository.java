@@ -5,9 +5,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import se.edufy.videoservice.entity.VideoEntity;
 
-import java.util.UUID;
+public interface VideoRepository extends JpaRepository<VideoEntity, Long> {
 
-public interface VideoRepository extends JpaRepository<VideoEntity, UUID> {
-    Page<VideoEntity> findByChannel_Id(UUID channelId, Pageable p);
-    Page<VideoEntity> findBySeries_Id(UUID seriesId, Pageable p);
+    Page<VideoEntity> findByChannel_Id(Long channelId, Pageable pageable);
+
+    Page<VideoEntity> findBySeries_Id(Long seriesId, Pageable pageable);
 }

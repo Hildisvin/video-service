@@ -2,800 +2,638 @@
 -- CHANNELS
 
 INSERT INTO channels (id, name, handle) VALUES
-  ('c1111111-1111-1111-1111-111111111111', 'Clint''s Reptiles', 'clintsreptiles'),
-  ('c2222222-2222-2222-2222-222222222222', 'Tasting History with Max Miller', 'tastinghistory'),
-  ('c3333333-3333-3333-3333-333333333333', 'Alec Steele', 'alecsteele'),
-  ('c4444444-4444-4444-4444-444444444444', 'MythBusters', 'mythbusters'),
-  ('c5555555-5555-5555-5555-555555555555', 'Gamers Nexus', 'gamersnexus'),
-  ('c6666666-6666-6666-6666-666666666666', 'Broughy1322', 'broughy1322');
+  (1, 'Clint''s Reptiles', 'clintsreptiles'),
+  (2, 'Tasting History with Max Miller', 'tastinghistory'),
+  (3, 'Alec Steele', 'alecsteele'),
+  (4, 'MythBusters', 'mythbusters'),
+  (5, 'Gamers Nexus', 'gamersnexus'),
+  (6, 'Broughy1322', 'broughy1322');
 
 
 -- SERIES / PLAYLISTS
 
 INSERT INTO series (id, title) VALUES
-  -- Clint: care vs field
-  ('s1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Reptile Care Basics'),
-  ('s1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa2', 'Field Herping Adventures'),
-
-  -- Max Miller: food vs drinks
-  ('s2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb1', 'Historical Dishes'),
-  ('s2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb2', 'Historical Drinks'),
-
-  -- Alec Steele: projects vs techniques
-  ('s3333333-cccc-cccc-cccc-ccccccccccc1', 'Forged Projects'),
-  ('s3333333-cccc-cccc-cccc-ccccccccccc2', 'Shop Techniques'),
-
-  -- MythBusters: myth tests vs science
-  ('s4444444-dddd-dddd-dddd-ddddddddddd1', 'Myth Testing'),
-  ('s4444444-dddd-dddd-dddd-ddddddddddd2', 'Behind the Experiments'),
-
-  -- Gamers Nexus: hardware vs cooling
-  ('s5555555-eeee-eeee-eeee-eeeeeeeeeee1', 'PC Hardware Deep Dives'),
-  ('s5555555-eeee-eeee-eeee-eeeeeeeeeee2', 'Cooling & Thermals'),
-
-  -- Broughy: cars vs bikes
-  ('s6666666-ffff-ffff-ffff-fffffffffff1', 'GTA Racing – Cars'),
-  ('s6666666-ffff-ffff-ffff-fffffffffff2', 'GTA Racing – Bikes');
+  -- Clint
+  (1, 'Reptile Care Basics'),
+  (2, 'Field Herping Adventures'),
+  -- Max
+  (3, 'Historical Dishes'),
+  (4, 'Historical Drinks'),
+  -- Alec
+  (5, 'Forged Projects'),
+  (6, 'Shop Techniques'),
+  -- MythBusters
+  (7, 'Myth Testing'),
+  (8, 'Behind the Experiments'),
+  -- Gamers Nexus
+  (9, 'PC Hardware Deep Dives'),
+  (10, 'Cooling & Thermals'),
+  -- Broughy
+  (11, 'GTA Racing – Cars'),
+  (12, 'GTA Racing – Bikes');
 
 
 -- GENRES
 
 INSERT INTO genres (id, name) VALUES
-  ('g001-g001-0000-0000-genre00000001', 'Djur'),
-  ('g002-g002-0000-0000-genre00000002', 'Natur'),
-  ('g003-g003-0000-0000-genre00000003', 'Historia'),
-  ('g004-g004-0000-0000-genre00000004', 'Matlagning'),
-  ('g005-g005-0000-0000-genre00000005', 'Metallarbete'),
-  ('g006-g006-0000-0000-genre00000006', 'Vetenskap'),
-  ('g007-g007-0000-0000-genre00000007', 'Teknik'),
-  ('g008-g008-0000-0000-genre00000008', 'Gaming'),
-  ('g009-g009-0000-0000-genre00000009', 'Motorsport'),
-  ('g010-g010-0000-0000-genre00000010', 'Experiment');
+  (1, 'Djur'),
+  (2, 'Natur'),
+  (3, 'Historia'),
+  (4, 'Matlagning'),
+  (5, 'Metallarbete'),
+  (6, 'Vetenskap'),
+  (7, 'Teknik'),
+  (8, 'Gaming'),
+  (9, 'Motorsport'),
+  (10, 'Experiment');
 
 
--- VIDEOS – Clint's Reptiles
+-- VIDEOS – Clint's Reptiles (1001–1010)
 
-INSERT INTO videos (id, version, title, description, releaseDate, streamUrl,
+INSERT INTO videos (id, version, title, description, release_date, stream_url,
                     visibility, channel_id, series_id, position_in_series) VALUES
-('vcr-001-0000-0000-000000000001', 0,
+(1001, 0,
  'Top 5 Beginner-Friendly Reptiles',
  'En genomgång av reptiler som passar nybörjare.',
  '2025-01-10',
  'https://cdn.edufy.local/reptiles/top5.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa1',
- 1
+ 1, 1, 1
 ),
-('vcr-002-0000-0000-000000000002', 0,
+(1002, 0,
  'How to Set Up a Bioactive Terrarium',
  'Steg för steg hur man bygger ett bioaktivt terrarium.',
  '2025-01-17',
  'https://cdn.edufy.local/reptiles/bioactive_setup.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa1',
- 2
+ 1, 1, 2
 ),
-('vcr-003-0000-0000-000000000003', 0,
+(1003, 0,
  'Handling Nervous Snakes Safely',
  'Tips för säker hantering av stressade ormar.',
  '2025-01-24',
  'https://cdn.edufy.local/reptiles/nervous_snakes.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa1',
- 3
+ 1, 1, 3
 ),
-('vcr-004-0000-0000-000000000004', 0,
+(1004, 0,
  'Best Feeder Insects for Lizards',
  'Genomgång av olika foderinsekter och näringsvärde.',
  '2025-01-31',
  'https://cdn.edufy.local/reptiles/feeder_insects.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa1',
- 4
+ 1, 1, 4
 ),
-('vcr-005-0000-0000-000000000005', 0,
+(1005, 0,
  'Shedding Problems and How to Fix Them',
  'Vanliga orsaker till dålig ömsning och lösningar.',
  '2025-02-07',
  'https://cdn.edufy.local/reptiles/shedding_help.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa1',
- 5
+ 1, 1, 5
 ),
-('vcr-006-0000-0000-000000000006', 0,
+(1006, 0,
  'Field Herping in Utah Desert',
  'Clint utforskar reptiler i ökenmiljö.',
  '2025-02-14',
  'https://cdn.edufy.local/reptiles/herping_utah.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa2',
- 1
+ 1, 2, 1
 ),
-('vcr-007-0000-0000-000000000007', 0,
+(1007, 0,
  'Night Herping in Tropical Forest',
  'Nattlig jakt på grodor och geckos.',
  '2025-02-21',
  'https://cdn.edufy.local/reptiles/night_forest.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa2',
- 2
+ 1, 2, 2
 ),
-('vcr-008-0000-0000-000000000008', 0,
+(1008, 0,
  'Searching for Turtles in Spring',
  'Vårutflykt med fokus på vattensköldpaddor.',
  '2025-02-28',
  'https://cdn.edufy.local/reptiles/spring_turtles.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa2',
- 3
+ 1, 2, 3
 ),
-('vcr-009-0000-0000-000000000009', 0,
+(1009, 0,
  'Field Trip: Snakes of the Grasslands',
  'Dokumentation av ormar i gräsmark.',
  '2025-03-07',
  'https://cdn.edufy.local/reptiles/grassland_snakes.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa2',
- 4
+ 1, 2, 4
 ),
-('vcr-010-0000-0000-000000000010', 0,
+(1010, 0,
  'Herping with Kids – Safety Tips',
  'Hur man herpar säkert med familjen.',
  '2025-03-14',
  'https://cdn.edufy.local/reptiles/herping_with_kids.mp4',
  'PUBLIC',
- 'c1111111-1111-1111-1111-111111111111',
- 's1111111-aaaa-aaaa-aaaa-aaaaaaaaaaa2',
- 5
+ 1, 2, 5
 );
 
+-- VIDEOS – Tasting History (1011–1020)
 
--- VIDEOS – Tasting History
-
-INSERT INTO videos (id, version, title, description, releaseDate, streamUrl,
+INSERT INTO videos (id, version, title, description, release_date, stream_url,
                     visibility, channel_id, series_id, position_in_series) VALUES
-('vtm-001-0000-0000-000000000001', 0,
+(1011, 0,
  'Cooking Ancient Roman Honey Cakes',
  'Max lagar en historisk dessert från romarriket.',
  '2025-01-12',
  'https://cdn.edufy.local/food/roman_cakes.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb1',
- 1
+ 2, 3, 1
 ),
-('vtm-002-0000-0000-000000000002', 0,
+(1012, 0,
  'Medieval Bread from Scratch',
  'Medeltida bröd med surdeg och vedugn.',
  '2025-01-19',
  'https://cdn.edufy.local/food/medieval_bread.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb1',
- 2
+ 2, 3, 2
 ),
-('vtm-003-0000-0000-000000000003', 0,
+(1013, 0,
  'Tudor Meat Pie Recreation',
  'En kraftig köttpaj inspirerad av Tudor-tiden.',
  '2025-01-26',
  'https://cdn.edufy.local/food/tudor_meat_pie.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb1',
- 3
+ 2, 3, 3
 ),
-('vtm-004-0000-0000-000000000004', 0,
+(1014, 0,
  '18th Century Street Food',
  'En titt på historisk mat som såldes på gatorna.',
  '2025-02-02',
  'https://cdn.edufy.local/food/street_food_18th.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb1',
- 4
+ 2, 3, 4
 ),
-('vtm-005-0000-0000-000000000005', 0,
+(1015, 0,
  'Viking Stew with Modern Ingredients',
  'En tolkning av vikingatida gryta.',
  '2025-02-09',
  'https://cdn.edufy.local/food/viking_stew.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb1',
- 5
+ 2, 3, 5
 ),
-('vtm-006-0000-0000-000000000006', 0,
+(1016, 0,
  'Recreating Ancient Greek Wine',
  'Historisk dryck rekonstruerad med moderna metoder.',
  '2025-02-16',
  'https://cdn.edufy.local/drink/greek_wine.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb2',
- 1
+ 2, 4, 1
 ),
-('vtm-007-0000-0000-000000000007', 0,
+(1017, 0,
  'Medieval Spiced Ale',
  'Kryddad ale utifrån medeltida recept.',
  '2025-02-23',
  'https://cdn.edufy.local/drink/spiced_ale.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb2',
- 2
+ 2, 4, 2
 ),
-('vtm-008-0000-0000-000000000008', 0,
+(1018, 0,
  'Renaissance Fruit Punch',
  'Festlig dryck från renässansens banketter.',
  '2025-03-02',
  'https://cdn.edufy.local/drink/renaissance_punch.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb2',
- 3
+ 2, 4, 3
 ),
-('vtm-009-0000-0000-000000000009', 0,
+(1019, 0,
  'Historic Hot Chocolate Variations',
  'Olika historiska versioner av varm choklad.',
  '2025-03-09',
  'https://cdn.edufy.local/drink/historic_hot_choc.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb2',
- 4
+ 2, 4, 4
 ),
-('vtm-010-0000-0000-000000000010', 0,
+(1020, 0,
  'Roman-Style Refreshing Summer Drink',
  'Somrig dryck inspirerad av antikens Rom.',
  '2025-03-16',
  'https://cdn.edufy.local/drink/roman_summer_drink.mp4',
  'PUBLIC',
- 'c2222222-2222-2222-2222-222222222222',
- 's2222222-bbbb-bbbb-bbbb-bbbbbbbbbbb2',
- 5
+ 2, 4, 5
 );
 
+-- VIDEOS – Alec Steele (1021–1030)
 
--- VIDEOS – Alec Steele
-
-INSERT INTO videos (id, version, title, description, releaseDate, streamUrl,
+INSERT INTO videos (id, version, title, description, release_date, stream_url,
                     visibility, channel_id, series_id, position_in_series) VALUES
-('vas-001-0000-0000-000000000001', 0,
+(1021, 0,
  'Forging a High-Carbon Utility Knife',
  'Kniv från stångstål till färdig produkt.',
  '2025-01-13',
  'https://cdn.edufy.local/forge/utility_knife.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc1',
- 1
+ 3, 5, 1
 ),
-('vas-002-0000-0000-000000000002', 0,
+(1022, 0,
  'Building a Pattern-Welded Blade',
  'Projekt med mönstervällt stål.',
  '2025-01-20',
  'https://cdn.edufy.local/forge/pattern_welded_blade.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc1',
- 2
+ 3, 5, 2
 ),
-('vas-003-0000-0000-000000000003', 0,
+(1023, 0,
  'Forged Chef''s Knife for Daily Use',
  'Praktisk kökskniv, fullt smidesprojekt.',
  '2025-01-27',
  'https://cdn.edufy.local/forge/chefs_knife.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc1',
- 3
+ 3, 5, 3
 ),
-('vas-004-0000-0000-000000000004', 0,
+(1024, 0,
  'Making a Viking-Style Axe',
  'Dekorativ men funktionell yxa.',
  '2025-02-03',
  'https://cdn.edufy.local/forge/viking_axe.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc1',
- 4
+ 3, 5, 4
 ),
-('vas-005-0000-0000-000000000005', 0,
+(1025, 0,
  'Forging a Small Hammer for the Shop',
  'Bygger ett eget släggliknande verktyg.',
  '2025-02-10',
  'https://cdn.edufy.local/forge/shop_hammer.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc1',
- 5
+ 3, 5, 5
 ),
-('vas-006-0000-0000-000000000006', 0,
+(1026, 0,
  'Heat Treating Basics Explained',
  'Härdning och anlöpning för olika ståltyper.',
  '2025-02-17',
  'https://cdn.edufy.local/forge/heat_treat_basics.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc2',
- 1
+ 3, 6, 1
 ),
-('vas-007-0000-0000-000000000007', 0,
+(1027, 0,
  'Grinding and Polishing Techniques',
  'Jämn slipning och spegelpolering.',
  '2025-02-24',
  'https://cdn.edufy.local/forge/grinding_polishing.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc2',
- 2
+ 3, 6, 2
 ),
-('vas-008-0000-0000-000000000008', 0,
+(1028, 0,
  'Forge Maintenance and Safety',
  'Rutiner för att hålla smedjan säker och effektiv.',
  '2025-03-03',
  'https://cdn.edufy.local/forge/maintenance_safety.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc2',
- 3
+ 3, 6, 3
 ),
-('vas-009-0000-0000-000000000009', 0,
+(1029, 0,
  'Intro to Damascus Pattern Design',
  'Hur man planerar mönstret i damaskusstål.',
  '2025-03-10',
  'https://cdn.edufy.local/forge/damascus_intro.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc2',
- 4
+ 3, 6, 4
 ),
-('vas-010-0000-0000-000000000010', 0,
+(1030, 0,
  'Tool Making: Tongs for Beginners',
  'Smider enkla tänger för nybörjare.',
  '2025-03-17',
  'https://cdn.edufy.local/forge/beginner_tongs.mp4',
  'PUBLIC',
- 'c3333333-3333-3333-3333-333333333333',
- 's3333333-cccc-cccc-cccc-ccccccccccc2',
- 5
+ 3, 6, 5
 );
 
+-- VIDEOS – MythBusters (1031–1040)
 
--- VIDEOS – MythBusters
-
-INSERT INTO videos (id, version, title, description, releaseDate, streamUrl,
+INSERT INTO videos (id, version, title, description, release_date, stream_url,
                     visibility, channel_id, series_id, position_in_series) VALUES
-('vmb-001-0000-0000-000000000001', 0,
+(1031, 0,
  'Can a Car Really Explode from Heat?',
  'Test av en populär Hollywood-myt.',
  '2025-01-14',
  'https://cdn.edufy.local/myths/car_heat.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd1',
- 1
+ 4, 7, 1
 ),
-('vmb-002-0000-0000-000000000002', 0,
+(1032, 0,
  'Is Duct Tape Strong Enough to Lift a Person?',
  'Experiment med tejp och tyngder.',
  '2025-01-21',
  'https://cdn.edufy.local/myths/duct_tape_lift.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd1',
- 2
+ 4, 7, 2
 ),
-('vmb-003-0000-0000-000000000003', 0,
+(1033, 0,
  'Can You Dodge a Paintball?',
  'Reaktionstid och fysik i fokus.',
  '2025-01-28',
  'https://cdn.edufy.local/myths/dodge_paintball.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd1',
- 3
+ 4, 7, 3
 ),
-('vmb-004-0000-0000-000000000004', 0,
+(1034, 0,
  'Will a Coin Dropped from a Skyscraper Kill?',
  'Klassisk myt om fallande mynt.',
  '2025-02-04',
  'https://cdn.edufy.local/myths/coin_skyscraper.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd1',
- 4
+ 4, 7, 4
 ),
-('vmb-005-0000-0000-000000000005', 0,
+(1035, 0,
  'Is Running or Walking Better in the Rain?',
  'Test av hur man blir minst blöt.',
  '2025-02-11',
  'https://cdn.edufy.local/myths/rain_walk_run.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd1',
- 5
+ 4, 7, 5
 ),
-('vmb-006-0000-0000-000000000006', 0,
+(1036, 0,
  'Inside an Industrial Fire Suppression System',
  'Tekniken bakom stora brandsläckningssystem.',
  '2025-02-18',
  'https://cdn.edufy.local/myths/fire_suppression.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd2',
- 1
+ 4, 8, 1
 ),
-('vmb-007-0000-0000-000000000007', 0,
+(1037, 0,
  'Slow-Motion Bullet Impact Lab',
  'Tester med höghastighetskamera.',
  '2025-02-25',
  'https://cdn.edufy.local/myths/bullet_lab.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd2',
- 2
+ 4, 8, 2
 ),
-('vmb-008-0000-0000-000000000008', 0,
+(1038, 0,
  'Crash Test Dummy Instrumentation',
  'Genomgång av sensorer och data från krocktester.',
  '2025-03-04',
  'https://cdn.edufy.local/myths/crash_test_lab.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd2',
- 3
+ 4, 8, 3
 ),
-('vmb-009-0000-0000-000000000009', 0,
+(1039, 0,
  'Building a Miniature Myth Setup',
  'Skalmodeller för säkra experiment.',
  '2025-03-11',
  'https://cdn.edufy.local/myths/miniature_setups.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd2',
- 4
+ 4, 8, 4
 ),
-('vmb-010-0000-0000-000000000010', 0,
+(1040, 0,
  'Data Logging for Myth Experiments',
  'Hur mätdata samlas in och analyseras.',
  '2025-03-18',
  'https://cdn.edufy.local/myths/data_logging.mp4',
  'PUBLIC',
- 'c4444444-4444-4444-4444-444444444444',
- 's4444444-dddd-dddd-dddd-ddddddddddd2',
- 5
+ 4, 8, 5
 );
 
+-- VIDEOS – Gamers Nexus (1041–1050)
 
--- VIDEOS – Gamers Nexus
-
-INSERT INTO videos (id, version, title, description, releaseDate, streamUrl,
+INSERT INTO videos (id, version, title, description, release_date, stream_url,
                     visibility, channel_id, series_id, position_in_series) VALUES
-('vgn-001-0000-0000-000000000001', 0,
+(1041, 0,
  'RTX 5090 Launch Review',
  'Genomgång av prestanda, pris och positionering.',
  '2025-01-15',
  'https://cdn.edufy.local/gn/rtx5090_review.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee1',
- 1
+ 5, 9, 1
 ),
-('vgn-002-0000-0000-000000000002', 0,
+(1042, 0,
  'Next-Gen CPU Roundup',
  'Jämförelse av moderna CPU-familjer.',
  '2025-01-22',
  'https://cdn.edufy.local/gn/cpu_roundup.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee1',
- 2
+ 5, 9, 2
 ),
-('vgn-003-0000-0000-000000000003', 0,
+(1043, 0,
  'Budget Gaming PC Build Guide',
  'Bygger en prisvärd dator för 1080p gaming.',
  '2025-01-29',
  'https://cdn.edufy.local/gn/budget_build.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee1',
- 3
+ 5, 9, 3
 ),
-('vgn-004-0000-0000-000000000004', 0,
+(1044, 0,
  'High-End Workstation for Content Creators',
  'Dator byggd för rendering och videoredigering.',
  '2025-02-05',
  'https://cdn.edufy.local/gn/workstation_build.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee1',
- 4
+ 5, 9, 4
 ),
-('vgn-005-0000-0000-000000000005', 0,
+(1045, 0,
  'SSD Endurance Testing Explained',
  'Analys av skrivslitage på moderna SSD:er.',
  '2025-02-12',
  'https://cdn.edufy.local/gn/ssd_endurance.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee1',
- 5
+ 5, 9, 5
 ),
-('vgn-006-0000-0000-000000000006', 0,
+(1046, 0,
  'AIO Cooler Test – 2025 Roundup',
  'Jämförelse av slutna vattenkylare.',
  '2025-02-19',
  'https://cdn.edufy.local/gn/aio_roundup.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee2',
- 1
+ 5, 10, 1
 ),
-('vgn-007-0000-0000-000000000007', 0,
+(1047, 0,
  'Air Coolers vs Liquid Coolers',
  'För- och nackdelar med olika kylmetoder.',
  '2025-02-26',
  'https://cdn.edufy.local/gn/air_vs_liquid.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee2',
- 2
+ 5, 10, 2
 ),
-('vgn-008-0000-0000-000000000008', 0,
+(1048, 0,
  'Case Airflow Optimization',
  'Hur man placerar fläktar för bästa kylning.',
  '2025-03-05',
  'https://cdn.edufy.local/gn/case_airflow.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee2',
- 3
+ 5, 10, 3
 ),
-('vgn-009-0000-0000-000000000009', 0,
+(1049, 0,
  'Thermal Pad vs Thermal Paste Testing',
  'Olika material för värmeöverföring.',
  '2025-03-12',
  'https://cdn.edufy.local/gn/thermal_materials.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee2',
- 4
+ 5, 10, 4
 ),
-('vgn-010-0000-0000-000000000010', 0,
+(1050, 0,
  'GPU Cooling Mod Experiments',
  'Modifiering av kylare och flöden.',
  '2025-03-19',
  'https://cdn.edufy.local/gn/gpu_cooling_mods.mp4',
  'PUBLIC',
- 'c5555555-5555-5555-5555-555555555555',
- 's5555555-eeee-eeee-eeee-eeeeeeeeeee2',
- 5
+ 5, 10, 5
 );
 
+-- VIDEOS – Broughy1322 (1051–1060)
 
--- VIDEOS – Broughy1322
-
-INSERT INTO videos (id, version, title, description, releaseDate, streamUrl,
+INSERT INTO videos (id, version, title, description, release_date, stream_url,
                     visibility, channel_id, series_id, position_in_series) VALUES
-('vbr-001-0000-0000-000000000001', 0,
+(1051, 0,
  'GTA V Lap Times – Sports Class',
  'Tidtagning på racingbilar i sportklassen.',
  '2025-01-16',
  'https://cdn.edufy.local/broughy/sports_class_laps.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff1',
- 1
+ 6, 11, 1
 ),
-('vbr-002-0000-0000-000000000002', 0,
+(1052, 0,
  'GTA V Lap Times – Super Class',
  'Tidtagning på bilar i superklassen.',
  '2025-01-23',
  'https://cdn.edufy.local/broughy/super_class_laps.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff1',
- 2
+ 6, 11, 2
 ),
-('vbr-003-0000-0000-000000000003', 0,
+(1053, 0,
  'Top Speed Testing on Long Straight',
  'Jämförelse av toppfart på olika biltyper.',
  '2025-01-30',
  'https://cdn.edufy.local/broughy/top_speed_tests.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff1',
- 3
+ 6, 11, 3
 ),
-('vbr-004-0000-0000-000000000004', 0,
+(1054, 0,
  'Handling Test – Tight City Circuit',
  'Hur olika bilar beter sig i teknisk stadslayout.',
  '2025-02-06',
  'https://cdn.edufy.local/broughy/city_handling.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff1',
- 4
+ 6, 11, 4
 ),
-('vbr-005-0000-0000-000000000005', 0,
+(1055, 0,
  'Endurance Race – 1-Hour GTA Event',
  'Större tävling med fokus på konsekvens.',
  '2025-02-13',
  'https://cdn.edufy.local/broughy/endurance_race.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff1',
- 5
+ 6, 11, 5
 ),
-('vbr-006-0000-0000-000000000006', 0,
+(1056, 0,
  'GTA V Bikes – Lap Time Testing',
  'Jämförelse av motorcyklar på bana.',
  '2025-02-20',
  'https://cdn.edufy.local/broughy/bike_lap_times.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff2',
- 1
+ 6, 12, 1
 ),
-('vbr-007-0000-0000-000000000007', 0,
+(1057, 0,
  'GTA V Bikes – Top Speed Ranking',
  'Topplista över snabbaste motorcyklar.',
  '2025-02-27',
  'https://cdn.edufy.local/broughy/bike_top_speed.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff2',
- 2
+ 6, 12, 2
 ),
-('vbr-008-0000-0000-000000000008', 0,
+(1058, 0,
  'Real Track Day – Lightweight Car',
  'Dataanalys från en verklig bankörning.',
  '2025-03-06',
  'https://cdn.edufy.local/broughy/trackday_lightweight.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff2',
- 3
+ 6, 12, 3
 ),
-('vbr-009-0000-0000-000000000009', 0,
+(1059, 0,
  'Real Track Day – Sportsbike',
  'Varvtider och telemetri från motorcykel på bana.',
  '2025-03-13',
  'https://cdn.edufy.local/broughy/trackday_sportsbike.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff2',
- 4
+ 6, 12, 4
 ),
-('vbr-010-0000-0000-000000000010', 0,
+(1060, 0,
  'Comparing GTA Cars to Real Lap Data',
  'Hur väl spelet matchar verkliga tider.',
  '2025-03-20',
  'https://cdn.edufy.local/broughy/gta_vs_real.mp4',
  'PUBLIC',
- 'c6666666-6666-6666-6666-666666666666',
- 's6666666-ffff-ffff-ffff-fffffffffff2',
- 5
+ 6, 12, 5
 );
-
 
 -- VIDEO_GENRES
 
-
--- Clint's Reptiles
+-- Clint's Reptiles (1001–1010)
 INSERT INTO video_genres (video_id, genre_id) VALUES
-('vcr-001-0000-0000-000000000001', 'g001-g001-0000-0000-genre00000001'),
-('vcr-001-0000-0000-000000000001', 'g002-g002-0000-0000-genre00000002'),
-('vcr-002-0000-0000-000000000002', 'g001-g001-0000-0000-genre00000001'),
-('vcr-003-0000-0000-000000000003', 'g001-g001-0000-0000-genre00000001'),
-('vcr-004-0000-0000-000000000004', 'g001-g001-0000-0000-genre00000001'),
-('vcr-005-0000-0000-000000000005', 'g001-g001-0000-0000-genre00000001'),
-('vcr-006-0000-0000-000000000006', 'g001-g001-0000-0000-genre00000001'),
-('vcr-006-0000-0000-000000000006', 'g002-g002-0000-0000-genre00000002'),
-('vcr-007-0000-0000-000000000007', 'g001-g001-0000-0000-genre00000001'),
-('vcr-007-0000-0000-000000000007', 'g002-g002-0000-0000-genre00000002'),
-('vcr-008-0000-0000-000000000008', 'g001-g001-0000-0000-genre00000001'),
-('vcr-008-0000-0000-000000000008', 'g002-g002-0000-0000-genre00000002'),
-('vcr-009-0000-0000-000000000009', 'g001-g001-0000-0000-genre00000001'),
-('vcr-009-0000-0000-000000000009', 'g002-g002-0000-0000-genre00000002'),
-('vcr-010-0000-0000-000000000010', 'g001-g001-0000-0000-genre00000001');
+(1001, 1), (1001, 2),
+(1002, 1),
+(1003, 1),
+(1004, 1),
+(1005, 1),
+(1006, 1), (1006, 2),
+(1007, 1), (1007, 2),
+(1008, 1), (1008, 2),
+(1009, 1), (1009, 2),
+(1010, 1);
 
--- Tasting History
-INSERT INTO video_genres VALUES
-('vtm-001-0000-0000-000000000001', 'g003-g003-0000-0000-genre00000003'),
-('vtm-001-0000-0000-000000000001', 'g004-g004-0000-0000-genre00000004'),
-('vtm-002-0000-0000-000000000002', 'g003-g003-0000-0000-genre00000003'),
-('vtm-002-0000-0000-000000000002', 'g004-g004-0000-0000-genre00000004'),
-('vtm-003-0000-0000-000000000003', 'g003-g003-0000-0000-genre00000003'),
-('vtm-003-0000-0000-000000000003', 'g004-g004-0000-0000-genre00000004'),
-('vtm-004-0000-0000-000000000004', 'g003-g003-0000-0000-genre00000003'),
-('vtm-004-0000-0000-000000000004', 'g004-g004-0000-0000-genre00000004'),
-('vtm-005-0000-0000-000000000005', 'g003-g003-0000-0000-genre00000003'),
-('vtm-005-0000-0000-000000000005', 'g004-g004-0000-0000-genre00000004'),
-('vtm-006-0000-0000-000000000006', 'g003-g003-0000-0000-genre00000003'),
-('vtm-006-0000-0000-000000000006', 'g004-g004-0000-0000-genre00000004'),
-('vtm-007-0000-0000-000000000007', 'g003-g003-0000-0000-genre00000003'),
-('vtm-007-0000-0000-000000000007', 'g004-g004-0000-0000-genre00000004'),
-('vtm-008-0000-0000-000000000008', 'g003-g003-0000-0000-genre00000003'),
-('vtm-008-0000-0000-000000000008', 'g004-g004-0000-0000-genre00000004'),
-('vtm-009-0000-0000-000000000009', 'g003-g003-0000-0000-genre00000003'),
-('vtm-009-0000-0000-000000000009', 'g004-g004-0000-0000-genre00000004'),
-('vtm-010-0000-0000-000000000010', 'g003-g003-0000-0000-genre00000003'),
-('vtm-010-0000-0000-000000000010', 'g004-g004-0000-0000-genre00000004');
+-- Tasting History (1011–1020)
+INSERT INTO video_genres (video_id, genre_id) VALUES
+(1011, 3), (1011, 4),
+(1012, 3), (1012, 4),
+(1013, 3), (1013, 4),
+(1014, 3), (1014, 4),
+(1015, 3), (1015, 4),
+(1016, 3), (1016, 4),
+(1017, 3), (1017, 4),
+(1018, 3), (1018, 4),
+(1019, 3), (1019, 4),
+(1020, 3), (1020, 4);
 
--- Alec Steele
-INSERT INTO video_genres VALUES
-('vas-001-0000-0000-000000000001', 'g005-g005-0000-0000-genre00000005'),
-('vas-002-0000-0000-000000000002', 'g005-g005-0000-0000-genre00000005'),
-('vas-003-0000-0000-000000000003', 'g005-g005-0000-0000-genre00000005'),
-('vas-004-0000-0000-000000000004', 'g005-g005-0000-0000-genre00000005'),
-('vas-005-0000-0000-000000000005', 'g005-g005-0000-0000-genre00000005'),
-('vas-006-0000-0000-000000000006', 'g005-g005-0000-0000-genre00000005'),
-('vas-006-0000-0000-000000000006', 'g006-g006-0000-0000-genre00000006'),
-('vas-007-0000-0000-000000000007', 'g005-g005-0000-0000-genre00000005'),
-('vas-008-0000-0000-000000000008', 'g005-g005-0000-0000-genre00000005'),
-('vas-009-0000-0000-000000000009', 'g005-g005-0000-0000-genre00000005'),
-('vas-010-0000-0000-000000000010', 'g005-g005-0000-0000-genre00000005');
+-- Alec Steele (1021–1030)
+INSERT INTO video_genres (video_id, genre_id) VALUES
+(1021, 5),
+(1022, 5),
+(1023, 5),
+(1024, 5),
+(1025, 5),
+(1026, 5), (1026, 6),
+(1027, 5),
+(1028, 5),
+(1029, 5),
+(1030, 5);
 
--- MythBusters
-INSERT INTO video_genres VALUES
-('vmb-001-0000-0000-000000000001', 'g006-g006-0000-0000-genre00000006'),
-('vmb-001-0000-0000-000000000001', 'g010-g010-0000-0000-genre00000010'),
-('vmb-002-0000-0000-000000000002', 'g006-g006-0000-0000-genre00000006'),
-('vmb-002-0000-0000-000000000002', 'g010-g010-0000-0000-genre00000010'),
-('vmb-003-0000-0000-000000000003', 'g006-g006-0000-0000-genre00000006'),
-('vmb-003-0000-0000-000000000003', 'g010-g010-0000-0000-genre00000010'),
-('vmb-004-0000-0000-000000000004', 'g006-g006-0000-0000-genre00000006'),
-('vmb-004-0000-0000-000000000004', 'g010-g010-0000-0000-genre00000010'),
-('vmb-005-0000-0000-000000000005', 'g006-g006-0000-0000-genre00000006'),
-('vmb-005-0000-0000-000000000005', 'g010-g010-0000-0000-genre00000010'),
-('vmb-006-0000-0000-000000000006', 'g006-g006-0000-0000-genre00000006'),
-('vmb-007-0000-0000-000000000007', 'g006-g006-0000-0000-genre00000006'),
-('vmb-008-0000-0000-000000000008', 'g006-g006-0000-0000-genre00000006'),
-('vmb-009-0000-0000-000000000009', 'g006-g006-0000-0000-genre00000006'),
-('vmb-010-0000-0000-000000000010', 'g006-g006-0000-0000-genre00000006');
+-- MythBusters (1031–1040)
+INSERT INTO video_genres (video_id, genre_id) VALUES
+(1031, 6), (1031, 10),
+(1032, 6), (1032, 10),
+(1033, 6), (1033, 10),
+(1034, 6), (1034, 10),
+(1035, 6), (1035, 10),
+(1036, 6),
+(1037, 6),
+(1038, 6),
+(1039, 6),
+(1040, 6);
 
--- Gamers Nexus
-INSERT INTO video_genres VALUES
-('vgn-001-0000-0000-000000000001', 'g007-g007-0000-0000-genre00000007'),
-('vgn-002-0000-0000-000000000002', 'g007-g007-0000-0000-genre00000007'),
-('vgn-003-0000-0000-000000000003', 'g007-g007-0000-0000-genre00000007'),
-('vgn-004-0000-0000-000000000004', 'g007-g007-0000-0000-genre00000007'),
-('vgn-005-0000-0000-000000000005', 'g007-g007-0000-0000-genre00000007'),
-('vgn-006-0000-0000-000000000006', 'g007-g007-0000-0000-genre00000007'),
-('vgn-006-0000-0000-000000000006', 'g006-g006-0000-0000-genre00000006'),
-('vgn-007-0000-0000-000000000007', 'g007-g007-0000-0000-genre00000007'),
-('vgn-007-0000-0000-000000000007', 'g006-g006-0000-0000-genre00000006'),
-('vgn-008-0000-0000-000000000008', 'g007-g007-0000-0000-genre00000007'),
-('vgn-008-0000-0000-000000000008', 'g006-g006-0000-0000-genre00000006'),
-('vgn-009-0000-0000-000000000009', 'g007-g007-0000-0000-genre00000007'),
-('vgn-010-0000-0000-000000000010', 'g007-g007-0000-0000-genre00000007');
+-- Gamers Nexus (1041–1050)
+INSERT INTO video_genres (video_id, genre_id) VALUES
+(1041, 7),
+(1042, 7),
+(1043, 7),
+(1044, 7),
+(1045, 7),
+(1046, 7), (1046, 6),
+(1047, 7), (1047, 6),
+(1048, 7), (1048, 6),
+(1049, 7),
+(1050, 7);
 
--- Broughy1322
-INSERT INTO video_genres VALUES
-('vbr-001-0000-0000-000000000001', 'g008-g008-0000-0000-genre00000008'),
-('vbr-001-0000-0000-000000000001', 'g009-g009-0000-0000-genre00000009'),
-('vbr-002-0000-0000-000000000002', 'g008-g008-0000-0000-genre00000008'),
-('vbr-002-0000-0000-000000000002', 'g009-g009-0000-0000-genre00000009'),
-('vbr-003-0000-0000-000000000003', 'g008-g008-0000-0000-genre00000008'),
-('vbr-003-0000-0000-000000000003', 'g009-g009-0000-0000-genre00000009'),
-('vbr-004-0000-0000-000000000004', 'g008-g008-0000-0000-genre00000008'),
-('vbr-004-0000-0000-000000000004', 'g009-g009-0000-0000-genre00000009'),
-('vbr-005-0000-0000-000000000005', 'g008-g008-0000-0000-genre00000008'),
-('vbr-005-0000-0000-000000000005', 'g009-g009-0000-0000-genre00000009'),
-('vbr-006-0000-0000-000000000006', 'g008-g008-0000-0000-genre00000008'),
-('vbr-007-0000-0000-000000000007', 'g008-g008-0000-0000-genre00000008'),
-('vbr-008-0000-0000-000000000008', 'g009-g009-0000-0000-genre00000009'),
-('vbr-009-0000-0000-000000000009', 'g009-g009-0000-0000-genre00000009'),
-('vbr-010-0000-0000-000000000010', 'g008-g008-0000-0000-genre00000008'),
-('vbr-010-0000-0000-000000000010', 'g009-g009-0000-0000-genre00000009');
+-- Broughy1322 (1051–1060)
+INSERT INTO video_genres (video_id, genre_id) VALUES
+(1051, 8), (1051, 9),
+(1052, 8), (1052, 9),
+(1053, 8), (1053, 9),
+(1054, 8), (1054, 9),
+(1055, 8), (1055, 9),
+(1056, 8),
+(1057, 8),
+(1058, 9),
+(1059, 9),
+(1060, 8), (1060, 9);

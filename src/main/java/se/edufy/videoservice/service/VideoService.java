@@ -65,6 +65,27 @@ public class VideoService {
     }
 
     @Transactional(readOnly = true)
+    public List<VideoDto> getAll() {
+        return videos.findAll().stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<VideoDto> getAllByChannel(Long channelId) {
+        return videos.findByChannel_Id(channelId).stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<VideoDto> getAllBySeries(Long seriesId) {
+        return videos.findBySeries_Id(seriesId).stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
     public VideoDto get(Long id) {
         VideoEntity v = videos.findById(id)
                 .orElseThrow(() -> new NotFoundException("Video not found: " + id));

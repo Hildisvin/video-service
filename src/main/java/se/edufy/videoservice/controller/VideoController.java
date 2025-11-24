@@ -9,7 +9,7 @@ import se.edufy.videoservice.dto.UpdateVideoRequest;
 import se.edufy.videoservice.dto.VideoDto;
 import se.edufy.videoservice.service.VideoService;
 
-import java.util.list;
+import java.util.List;
 import java.util.Optional;
 
 @RestController

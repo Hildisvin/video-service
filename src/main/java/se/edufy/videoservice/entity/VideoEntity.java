@@ -71,6 +71,7 @@ public class VideoEntity {
     public String getDescription() {
         return description;
     }
+    @Column(name = "release_date", nullable = false)
     public LocalDate getReleaseDate() {
         return releaseDate;
     }

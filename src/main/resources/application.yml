@@ -1,7 +1,11 @@
 spring:
   application:
     name: video-service
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://kc.diddis.top/realms/edufyrealm
   jpa:
     hibernate:
       ddl-auto: update

@@ -12,12 +12,12 @@ public record CreateVideoRequest(
         @Size(max = 4000)
         String description,
         LocalDate releaseDate,
-        @NotBlank
         @Size(max = 1000)
         String streamUrl,
         @NotNull
         Long channelId,
         Long seriesId,
+        @NotNull
         List<@NotBlank String> genres,
         @Pattern(regexp = "PUBLIC|UNLISTED|PRIVATE")
         String visibility,

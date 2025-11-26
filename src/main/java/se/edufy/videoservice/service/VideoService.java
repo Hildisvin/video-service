@@ -6,14 +6,19 @@ import org.springframework.transaction.annotation.Transactional;
 import se.edufy.videoservice.dto.CreateVideoRequest;
 import se.edufy.videoservice.dto.UpdateVideoRequest;
 import se.edufy.videoservice.dto.VideoDto;
+import se.edufy.videoservice.entity.ChannelEntity;
 import se.edufy.videoservice.entity.GenreEntity;
 import se.edufy.videoservice.entity.VideoEntity;
+import se.edufy.videoservice.entity.SeriesEntity;
+import se.edufy.videoservice.exception.ForbiddenException;
 import se.edufy.videoservice.exception.NotFoundException;
 import se.edufy.videoservice.mapper.VideoMapper;
 import se.edufy.videoservice.repository.ChannelRepository;
 import se.edufy.videoservice.repository.GenreRepository;
 import se.edufy.videoservice.repository.SeriesRepository;
 import se.edufy.videoservice.repository.VideoRepository;
+import se.edufy.videoservice.security.SecurityUtils;
+import java.time.LocalDate;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -65,6 +70,27 @@ public class VideoService {
     }
 
     @Transactional(readOnly = true)
+    public List<VideoDto> getAll() {
+        return videos.findAll().stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<VideoDto> getAllByChannel(Long channelId) {
+        return videos.findByChannel_Id(channelId).stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<VideoDto> getAllBySeries(Long seriesId) {
+        return videos.findBySeries_Id(seriesId).stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
     public VideoDto get(Long id) {
         VideoEntity v = videos.findById(id)
                 .orElseThrow(() -> new NotFoundException("Video not found: " + id));
@@ -72,6 +98,12 @@ public class VideoService {
     }
 
     public VideoDto create(CreateVideoRequest r) {
+        Long userChannelId = SecurityUtils.currentChannelId();
+
+        if (!userChannelId.equals(r.channelId())) {
+            throw new ForbiddenException("You are not allowed to add videos to this channel");
+        }
+
         VideoEntity v = new VideoEntity();
         applyCreate(v, r);
         VideoEntity saved = videos.save(v);
@@ -79,30 +111,50 @@ public class VideoService {
     }
 
     public VideoDto update(Long id, UpdateVideoRequest r) {
+        Long userChannelId = SecurityUtils.currentChannelId();
+
         VideoEntity v = videos.findById(id)
                 .orElseThrow(() -> new NotFoundException("Video not found: " + id));
+
+        if (!userChannelId.equals(v.getChannel().getId())) {
+            throw new ForbiddenException("You are not allowed to modify this video");
+        }
+
+        if (r.channelId() != null && !r.channelId().equals(userChannelId)) {
+            throw new ForbiddenException("You are not allowed to move this video to another channel");
+        }
+
         applyUpdate(v, r);
         VideoEntity saved = videos.save(v);
         return mapper.toDto(saved);
     }
 
     public void delete(Long id) {
-        if (!videos.existsById(id)) {
-            throw new NotFoundException("Video not found: " + id);
+        Long userChannelId = SecurityUtils.currentChannelId();
+
+        VideoEntity v = videos.findById(id)
+                .orElseThrow(() -> new NotFoundException("Video not found: " + id));
+
+        if (!userChannelId.equals(v.getChannel().getId())) {
+            throw new ForbiddenException("You are not allowed to delete this video");
         }
+
         videos.deleteById(id);
     }
 
     private void applyCreate(VideoEntity v, CreateVideoRequest r) {
         v.setTitle(r.title());
         v.setDescription(r.description());
-        v.setReleaseDate(r.releaseDate());
-        v.setStreamUrl(r.streamUrl());
 
-        v.setChannel(
-                channels.findById(r.channelId())
-                        .orElseThrow(() -> new NotFoundException("Channel not found: " + r.channelId()))
-        );
+        if (r.releaseDate() != null) {
+            v.setReleaseDate(r.releaseDate());
+        } else {
+            v.setReleaseDate(LocalDate.now());
+        }
+
+        ChannelEntity channel = channels.findById(r.channelId())
+                .orElseThrow(() -> new NotFoundException("Channel not found: " + r.channelId()));
+        v.setChannel(channel);
 
         if (r.seriesId() != null) {
             v.setSeries(
@@ -122,7 +174,40 @@ public class VideoService {
         if (r.positionInSeries() != null) {
             v.setPositionInSeries(r.positionInSeries());
         }
+
+        String streamUrl = r.streamUrl();
+        if (streamUrl == null || streamUrl.isBlank()) {
+            streamUrl = generateStreamUrl(
+                    channel,
+                    r.title(),
+                    v.getSeries()
+            );
+        }
+        v.setStreamUrl(streamUrl);
     }
+
+    private String generateStreamUrl(ChannelEntity channel, String title, SeriesEntity series) {
+        String base = "https://edufy.com/video/";
+
+        String parentPart;
+
+        if (series != null && series.getTitle() != null) {
+            parentPart = slugify(series.getTitle());
+        } else {
+            parentPart = slugify(channel.getHandle());
+        }
+
+        String titleSlug = slugify(title);
+
+        return base + parentPart + "/" + titleSlug;
+    }
+
+    private String slugify(String input) {
+        return input.toLowerCase()
+                .replaceAll("[^a-z0-9]+", "-")
+                .replaceAll("(^-|-$)", "");
+    }
+
 
     private void applyUpdate(VideoEntity v, UpdateVideoRequest r) {
         if (r.title() != null) v.setTitle(r.title());
